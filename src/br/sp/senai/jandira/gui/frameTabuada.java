@@ -25,6 +25,7 @@ public class frameTabuada {
 	public int textoMultiplicador;
 	public int textoMinMultiplicador;
 	public int textoMaxMultiplicador;
+	public int keyListener;
 
 	public void criarTela() {
 
@@ -132,6 +133,78 @@ public class frameTabuada {
 			}
 		});
 
+		textMultiplicando.addKeyListener(new KeyListener() { 
+		
+			public void keyReleased(KeyEvent e) {
+				keyListener = e.getKeyCode();	
+				textMultiplicando.setText(textMultiplicando.getText().replaceAll("[^0-9]", ""));
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() ==  10) {
+					textMinMultiplicador.requestFocus();
+				}
+			}
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		textMinMultiplicador.addKeyListener(new KeyListener() { 
+			
+			public void keyReleased(KeyEvent e) {
+				keyListener = e.getKeyCode();
+				
+				textMinMultiplicador.setText(textMinMultiplicador.getText().replaceAll("[^0-9]", ""));
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() ==  10) {
+					textMaxMultiplicador.requestFocus();
+				}
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		textMaxMultiplicador.addKeyListener(new KeyListener() { 
+			
+			public void keyReleased(KeyEvent e) {
+				keyListener = e.getKeyCode();
+				
+				textMaxMultiplicador.setText(textMaxMultiplicador.getText().replaceAll("[^0-9]", ""));
+				
+			}
+			
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() ==  10) {
+					btnCalcularTabuada.requestFocus();
+				}
+				
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
+		
+		
 		painelContainer.add(tituloApp);
 		painelContainer.add(multiplicando);
 		painelContainer.add(textMultiplicando);
